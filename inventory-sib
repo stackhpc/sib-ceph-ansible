@@ -1,0 +1,29 @@
+
+[sib-ceph]
+ceph-osd-0 ansible_host=10.12.3.5
+ceph-osd-1 ansible_host=10.12.3.6
+ceph-osd-2 ansible_host=10.12.3.7
+
+[sib-ceph:vars]
+ansible_user=stack
+
+[mons:children]
+sib-ceph
+
+[mdss:children]
+sib-ceph
+
+[mgrs]
+ceph-osd-0
+
+[osds:children]
+sib-ceph
+
+[clients]
+[rgws]
+[agents]
+[nfss]
+[restapis]
+[rbdmirrors]
+[iscsi_gws]
+
